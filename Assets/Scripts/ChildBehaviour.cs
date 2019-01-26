@@ -6,8 +6,8 @@ using UnityEngine;
 
 public class ChildBehaviour : MonoBehaviour
 {
-    private bool isFollowingPlayer = false;
-    private bool isDroppedOff = false;
+    public bool isFollowingPlayer = false;
+    public bool isDroppedOff = false;
     private float childSize;
     private Renderer childMaterial;
     private int playerFollowerNumber;
