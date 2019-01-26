@@ -92,6 +92,10 @@ public class ChildBehaviour : MonoBehaviour
         // Gets my seat position around the bonfire
         mySeatPosition = bfs.bonfireSeats[bfs.getChildrenDroppedOff()].transform;
         bfs.IncreaseChildrenDroppedOff();
+
+        //Player stops wamring up after they drop off the child
+        dpc.isReloadingWarmthFromChild = true;
+
         // Grow bonfire from here
         // bonfire.childrenDroppedOff++;
         // play sound
@@ -108,8 +112,10 @@ public class ChildBehaviour : MonoBehaviour
         {
             dpc.followerChainPositions.Add(new Vector3());
         }
-        
 
-        // play sound
+        //Player gets to refuel warmth if it picks up a child
+        dpc.isReloadingWarmthFromChild = true;
+
+        //TODO play sound
     }
 }
