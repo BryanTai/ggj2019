@@ -282,11 +282,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   pathFollowerSteps: 10
+  pathOffset: 5
   followerChainPositions: []
   maximumWarmth: 100
   minDistanceForWarmth: 2
   warmthLossPerSecond: 1
   warmthGainPerSecond: 20
+  isReloadingWarmthFromChild: 0
   worldController: {fileID: 0}
   warmthText: {fileID: 1331836179}
 --- !u!54 &7081881786367869307
