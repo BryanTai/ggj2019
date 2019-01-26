@@ -16,7 +16,6 @@ public class dummyPlayerController : MonoBehaviour
 
     private float currentWarmth; //If this hits zero, the player becomes too sad to continue :(
     public float maximumWarmth = 100f;
-    public float minDistanceForWarmth = 3f; //How close the player needs to be to a heat source to gain warmth
     public float warmthLossPerSecond = 1f;
     public float warmthGainPerSecond = 20f;
 
@@ -64,9 +63,7 @@ public class dummyPlayerController : MonoBehaviour
         }else
         {
             //Check if Player is near the Bonfire
-            float closestDistance = worldController.GetDistanceToBonfire();
-
-            if (closestDistance <= minDistanceForWarmth)
+            if (worldController.IsPlayerNearBonfire())
             {
                 if (currentWarmth < maximumWarmth)
                 {

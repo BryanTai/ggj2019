@@ -8,6 +8,8 @@ public class WorldController : MonoBehaviour
     public GameObject[] children;
     public GameObject bonfire;
 
+    public BonfireWarmth bonfireWarmth;
+
     public const int TOTAL_CHILDREN = 5;
 
     // Start is called before the first frame update
@@ -20,6 +22,12 @@ public class WorldController : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public bool IsPlayerNearBonfire()
+    {
+        float playerDistance = GetDistanceToBonfire();
+        return playerDistance < bonfireWarmth.bonfireWarmthRadius;
     }
 
     public GameObject GetClosestHeatSourceToPlayer()
