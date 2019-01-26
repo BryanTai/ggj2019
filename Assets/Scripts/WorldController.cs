@@ -29,6 +29,13 @@ public class WorldController : MonoBehaviour
 
         foreach(GameObject child in children)
         {
+            //Children that are following or already at home are not heat sources anymore
+            ChildBehaviour tempChild = child.GetComponent<ChildBehaviour>();
+            if (tempChild.isFollowingPlayer || tempChild.isDroppedOff)
+            {
+                continue;
+            }
+
             float nextDistance = Vector3.Distance(player.transform.position, child.transform.position);
             if (nextDistance < currentClosestDistance)
             {

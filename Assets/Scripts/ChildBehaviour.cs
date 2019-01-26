@@ -7,8 +7,8 @@ public enum FollowerType { child, wood };
 
 public class ChildBehaviour : MonoBehaviour
 {
-    private bool isFollowingPlayer = false;
-    private bool isDroppedOff = false;
+    public bool isFollowingPlayer = false;
+    public bool isDroppedOff = false;
     private float childSize;
     private Renderer childMaterial;
     private int playerFollowerNumber;
@@ -95,6 +95,9 @@ public class ChildBehaviour : MonoBehaviour
             // Gets my seat position around the bonfire
             mySeatPosition = bfs.bonfireSeats[bfs.getChildrenDroppedOff()].transform;
             bfs.IncreaseChildrenDroppedOff();
+
+            //Player stops wamring up after they drop off the child
+            dpc.isReloadingWarmthFromChild = true;
             // play sound
         }
         else if(followerType == FollowerType.wood)
@@ -117,6 +120,9 @@ public class ChildBehaviour : MonoBehaviour
             dpc.followerChainPositions.Add(new Vector3());
         }
 
-        // play sound
+        //Player gets to refuel warmth if it picks up a child
+        dpc.isReloadingWarmthFromChild = true;
+
+        //TODO play sound
     }
 }
