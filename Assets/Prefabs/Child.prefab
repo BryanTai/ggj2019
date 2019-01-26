@@ -104,7 +104,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc17f292aa42a1340b9ea0142a7118e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  followerType: 0
+  isFollowingPlayer: 0
+  isDroppedOff: 0
   pickupDistance: 2
   dropOffDistance: 4
   followDistance: 1
@@ -119,3 +120,4 @@ MonoBehaviour:
   - {fileID: 2100000, guid: a852875a5b5c6444e8bc07194c1fb538, type: 2}
   - {fileID: 2100000, guid: 52e36209b226b1b42be4478743d7c11d, type: 2}
   - {fileID: 2100000, guid: e3efbff7003725d448ed5a1459b709d8, type: 2}
+  heart: {fileID: 5181945833199160117, guid: 415540a3c04454ec0abd34e083091ae4, type: 3}
