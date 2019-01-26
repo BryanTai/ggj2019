@@ -59,6 +59,8 @@ public class dummyPlayerController : MonoBehaviour
         {
             currentWarmth -= warmthLossPerSecond * Time.deltaTime;
         }
+
+        //TODO Use lighting instead of a number
         warmthText.text = currentWarmth.ToString("F2");
     }
 
