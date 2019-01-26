@@ -104,6 +104,7 @@ GameObject:
   - component: {fileID: 6742154827343471118}
   - component: {fileID: 6742154827343471117}
   - component: {fileID: 6742154827343471113}
+  - component: {fileID: 1062874473890640946}
   m_Layer: 0
   m_Name: dummyBonfire
   m_TagString: Bonfire
@@ -207,6 +208,20 @@ MonoBehaviour:
   - {fileID: 6742154828316012859}
   - {fileID: 6742154829012935955}
   - {fileID: 6742154827597858077}
+--- !u!114 &1062874473890640946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6742154827343471116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b6c0609555fb4842b47dbb6c34ebbb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bonfireWarmthRadius: 2
+  warmthIncrementWood: 1
 --- !u!1 &6742154827537153092
 GameObject:
   m_ObjectHideFlags: 0
