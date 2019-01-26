@@ -7,6 +7,7 @@ public class dummyPlayerController : MonoBehaviour
 {
     public float moveSpeed;
     public int pathFollowerSteps; // the distance followers will follow the player in a chain
+    public int pathOffset;
     public List<Vector3> followerChainPositions;
     List<Vector3> playerPath = new List<Vector3>(); // List of positions used for player path
 
@@ -107,7 +108,8 @@ public class dummyPlayerController : MonoBehaviour
                 // checks if there are enough positions to log a new follower position, exits if there isn't
                 if(playerPath.Count >= pathFollowerSteps * (i + 1))
                 {
-                    followerChainPositions[i] = playerPath[playerPath.Count - pathFollowerSteps*(i+1)];
+                    // Sets an offset for the first follower away from the player
+                    followerChainPositions[i] = playerPath[playerPath.Count - pathFollowerSteps * (i + 1) - pathOffset];
                 }
                 else
                 {
