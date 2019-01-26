@@ -51,3 +51,4 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   bonfire: {fileID: 0}
+  bonfireWarmth: {fileID: 0}
