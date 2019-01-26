@@ -6,7 +6,8 @@ using UnityEngine;
 using Object = System.Object;
 
 [System.Serializable]
-public enum FollowerType { child, wood };
+public enum FollowerType { child, wood, marshmallow };
+public enum FollowerRequirement { none, marshmallow };
 
 public class ChildBehaviour : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class ChildBehaviour : MonoBehaviour
     private Transform mySeatPosition;
 
     public FollowerType followerType;
+    public FollowerRequirement followerRequirement;
     public float pickupDistance; // The distance the player needs to be to pick me up
     public float dropOffDistance; // The distance the player needs to be to drop me off at the bonfire
     public float followDistance; // the distance at which I will keep when following the player
@@ -69,7 +71,15 @@ public class ChildBehaviour : MonoBehaviour
         // If I have not been picked up yet and the player is within range of me to be picked up
         if (!isDroppedOff && !isFollowingPlayer && Vector3.Distance(transform.position,player.transform.position) < pickupDistance)
         {
-            PickedUp();
+            // If I don't have a requirement, pick me up. If I do, the requirement must be met first. 
+            if(followerRequirement == FollowerRequirement.none)
+            {
+                PickedUp();
+            }
+            else if(followerRequirement == FollowerRequirement.marshmallow)
+            {
+
+            }
         }
         // if I have been picked up
         else if (isFollowingPlayer && !isDroppedOff)
