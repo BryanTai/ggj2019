@@ -368,6 +368,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
+  pathFollowerSteps: 10
+  followerChainPositions: []
 --- !u!54 &258410904
 Rigidbody:
   m_ObjectHideFlags: 0

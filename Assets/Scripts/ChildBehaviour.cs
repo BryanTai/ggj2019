@@ -10,6 +10,7 @@ public class ChildBehaviour : MonoBehaviour
     private bool isDroppedOff = false;
     private float childSize;
     private Renderer childMaterial;
+    private int playerFollowerNumber;
 
     public float pickupDistance; // The distance the player needs to be to pick me up
     public float dropOffDistance; // The distance the player needs to be to drop me off at the bonfire
@@ -21,12 +22,14 @@ public class ChildBehaviour : MonoBehaviour
     public bool randomizeColour = false; // Whether or not to randomize the children's color
     public Material[] childMaterialsList;
     GameObject player; // the player object reference
+    dummyPlayerController dpc;
     GameObject bonfire;
 
     private void Awake()
     {
         // Find references to objects/components
         player = GameObject.FindGameObjectWithTag("Player");
+        dpc = player.GetComponent<dummyPlayerController>();
         bonfire = GameObject.FindGameObjectWithTag("Bonfire");
         childMaterial = GetComponent<Renderer>();
 
@@ -39,9 +42,7 @@ public class ChildBehaviour : MonoBehaviour
         {
             childMaterial.material = childMaterialsList[0];
         }
-
-    
-
+        
         // Picks a random size for the child
         childSize = UnityEngine.Random.Range(childSizeMin, childSizeMax);
         transform.localScale = new Vector3(1, 1, 1) * childSize;
@@ -64,8 +65,8 @@ public class ChildBehaviour : MonoBehaviour
         // if I have been picked up
         else if (isFollowingPlayer && !isDroppedOff)
         {
-            // lerp position to player
-            transform.position = Vector3.Lerp(transform.position, player.transform.position, followLerpSpeed);
+            // lerp position to player's path
+            transform.position = Vector3.Lerp(transform.position, dpc.followerChainPositions[playerFollowerNumber-1], followLerpSpeed);
         }
 
         if (isFollowingPlayer && !isDroppedOff && Vector3.Distance(player.transform.position, bonfire.transform.position) < dropOffDistance)
@@ -74,6 +75,7 @@ public class ChildBehaviour : MonoBehaviour
         }
         else if (isDroppedOff)
         {
+            // lerp to he bonfire's position
             transform.position = Vector3.Lerp(transform.position, bonfire.transform.position, followLerpSpeed);
         }
     }
@@ -82,15 +84,26 @@ public class ChildBehaviour : MonoBehaviour
     {
         isFollowingPlayer = false;
         isDroppedOff = true;
-
+        dpc.DecreaseFollowers();
+        playerFollowerNumber = 0;
         // Grow bonfire from here
-            // bonfire.childrenDroppedOff++;
+        // bonfire.childrenDroppedOff++;
         // play sound
     }
 
     private void PickedUp()
     {
         isFollowingPlayer = true;
+        dpc.IncreaseFollowers();
+        // Gets my follower position
+        playerFollowerNumber = dpc.GetFollowers();
+        // expands list if necessary
+        if(dpc.followerChainPositions.Count < dpc.GetFollowers())
+        {
+            dpc.followerChainPositions.Add(new Vector3());
+        }
+        
+
         // play sound
     }
 }
