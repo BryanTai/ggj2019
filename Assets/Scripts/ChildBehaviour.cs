@@ -11,6 +11,7 @@ public class ChildBehaviour : MonoBehaviour
     private float childSize;
     private Renderer childMaterial;
     private int playerFollowerNumber;
+    private Transform mySeatPosition;
 
     public float pickupDistance; // The distance the player needs to be to pick me up
     public float dropOffDistance; // The distance the player needs to be to drop me off at the bonfire
@@ -24,6 +25,7 @@ public class ChildBehaviour : MonoBehaviour
     GameObject player; // the player object reference
     dummyPlayerController dpc;
     GameObject bonfire;
+    BonfireSeating bfs;
 
     private void Awake()
     {
@@ -31,6 +33,7 @@ public class ChildBehaviour : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         dpc = player.GetComponent<dummyPlayerController>();
         bonfire = GameObject.FindGameObjectWithTag("Bonfire");
+        bfs = bonfire.GetComponent<BonfireSeating>();
         childMaterial = GetComponent<Renderer>();
 
         if (randomizeColour)
@@ -76,7 +79,7 @@ public class ChildBehaviour : MonoBehaviour
         else if (isDroppedOff)
         {
             // lerp to he bonfire's position
-            transform.position = Vector3.Lerp(transform.position, bonfire.transform.position, followLerpSpeed);
+            transform.position = Vector3.Lerp(transform.position, mySeatPosition.position, followLerpSpeed);
         }
     }
 
@@ -86,6 +89,9 @@ public class ChildBehaviour : MonoBehaviour
         isDroppedOff = true;
         dpc.DecreaseFollowers();
         playerFollowerNumber = 0;
+        // Gets my seat position around the bonfire
+        mySeatPosition = bfs.bonfireSeats[bfs.getChildrenDroppedOff()].transform;
+        bfs.IncreaseChildrenDroppedOff();
         // Grow bonfire from here
         // bonfire.childrenDroppedOff++;
         // play sound
