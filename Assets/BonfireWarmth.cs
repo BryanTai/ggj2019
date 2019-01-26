@@ -5,20 +5,8 @@ using UnityEngine;
 
 public class BonfireWarmth : MonoBehaviour
 {
-    public float bonfireWarmthRadius;
-    public float warmthIncrementWood;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public float bonfireWarmthRadius; //How close the Player needs to be to the bonfire to get warmed
+    public float warmthIncrementWood; //The radius increase when wood is added
 
     internal void WoodDroppedOff()
     {
