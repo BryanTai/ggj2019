@@ -43,8 +43,6 @@ public class dummyPlayerController : MonoBehaviour
     {
         if(currentWarmth < 0)
         {
-            Debug.Log("Game Over!");
-
             warmthText.text = "I AM SAD :(";
 
             return;
