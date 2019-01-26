@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SceneManagement;
 using UnityEngine;
+using Object = System.Object;
+
 [System.Serializable]
 public enum FollowerType { child, wood };
 
@@ -29,6 +32,9 @@ public class ChildBehaviour : MonoBehaviour
     GameObject bonfire;
     BonfireSeating bfs;
     BonfireWarmth bfw;
+
+    [SerializeField]
+    private GameObject heart;
 
     private void Awake()
     {
@@ -119,6 +125,10 @@ public class ChildBehaviour : MonoBehaviour
         {
             dpc.followerChainPositions.Add(new Vector3());
         }
+        
+        // show heart
+        Vector3 heartPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z + 1);
+        Instantiate(heart, heartPosition, heart.transform.rotation);
 
         //Player gets to refuel warmth if it picks up a child
         dpc.isReloadingWarmthFromChild = true;
