@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 [System.Serializable]
+public enum FollowerType { child, wood };
 
 public class ChildBehaviour : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class ChildBehaviour : MonoBehaviour
     private int playerFollowerNumber;
     private Transform mySeatPosition;
 
+    public FollowerType followerType;
     public float pickupDistance; // The distance the player needs to be to pick me up
     public float dropOffDistance; // The distance the player needs to be to drop me off at the bonfire
     public float followDistance; // the distance at which I will keep when following the player
@@ -26,6 +28,7 @@ public class ChildBehaviour : MonoBehaviour
     dummyPlayerController dpc;
     GameObject bonfire;
     BonfireSeating bfs;
+    BonfireWarmth bfw;
 
     private void Awake()
     {
@@ -34,16 +37,13 @@ public class ChildBehaviour : MonoBehaviour
         dpc = player.GetComponent<dummyPlayerController>();
         bonfire = GameObject.FindGameObjectWithTag("Bonfire");
         bfs = bonfire.GetComponent<BonfireSeating>();
+        bfw = bonfire.GetComponent<BonfireWarmth>();
         childMaterial = GetComponent<Renderer>();
 
         if (randomizeColour)
         {
             // picks a random material to use to display the colour of the child
             childMaterial.material = childMaterialsList[UnityEngine.Random.Range(0, childMaterialsList.Length)];
-        }
-        else
-        {
-            childMaterial.material = childMaterialsList[0];
         }
         
         // Picks a random size for the child
@@ -89,12 +89,20 @@ public class ChildBehaviour : MonoBehaviour
         isDroppedOff = true;
         dpc.DecreaseFollowers();
         playerFollowerNumber = 0;
-        // Gets my seat position around the bonfire
-        mySeatPosition = bfs.bonfireSeats[bfs.getChildrenDroppedOff()].transform;
-        bfs.IncreaseChildrenDroppedOff();
-        // Grow bonfire from here
-        // bonfire.childrenDroppedOff++;
-        // play sound
+
+        if(followerType == FollowerType.child)
+        {
+            // Gets my seat position around the bonfire
+            mySeatPosition = bfs.bonfireSeats[bfs.getChildrenDroppedOff()].transform;
+            bfs.IncreaseChildrenDroppedOff();
+            // play sound
+        }
+        else if(followerType == FollowerType.wood)
+        {
+            mySeatPosition = bonfire.transform;
+            // Grow bonfire from here
+            bfw.WoodDroppedOff();
+        }
     }
 
     private void PickedUp()
@@ -108,7 +116,6 @@ public class ChildBehaviour : MonoBehaviour
         {
             dpc.followerChainPositions.Add(new Vector3());
         }
-        
 
         // play sound
     }
