@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Child
   - Bonfire
+  - bonfire Seat
   layers:
   - Default
   - TransparentFX
