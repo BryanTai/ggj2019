@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class dummyPlayerController : MonoBehaviour
 {
+    public WorldController worldController;
+
     public float moveSpeed;
     public int pathFollowerSteps; // the distance followers will follow the player in a chain
     public int pathOffset;
@@ -18,18 +20,18 @@ public class dummyPlayerController : MonoBehaviour
     public bool marshmallowTaken = false;
     public GameObject childThatTookMarshmallow;
 
+    [Header("Player Warmth Fields")]
     private float currentWarmth; //If this hits zero, the player becomes too sad to continue :(
-    public float maximumWarmth = 100f;
+    public float maximumWarmth = 30f;
     public float minDistanceForWarmth = 3f; //How close the player needs to be to a heat source to gain warmth
     public float warmthLossPerSecond = 1f;
     public float warmthGainPerSecond = 20f;
 
     public bool isReloadingWarmthFromChild = false;
 
-    public WorldController worldController;
+    public PlayerEffectController playerEffectController; //Controls the glow and fire effects on Player
 
-    public TextMesh warmthText; //TODO Replace this with another way to display current Warmth. glow effect
-
+    [Header("Compass Glow fields")]
     public Transform CompassGroupTransform;
     public SpriteRenderer CompassHalo1; //Larger orange glow
     public SpriteRenderer CompassHalo2; //Smaller white glow
@@ -59,11 +61,14 @@ public class dummyPlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (worldController.isInIntroAnimation)
+        {
+            return;
+        }
+
         if(currentWarmth < 0)
         {
             Debug.Log("Game Over!");
-
-            warmthText.text = "I AM SAD :(";
 
             return;
         }
@@ -102,12 +107,17 @@ public class dummyPlayerController : MonoBehaviour
             }
         }
 
-        //TODO Use lighting instead of a number
-        warmthText.text = currentWarmth.ToString("F0");
+        //Set the amount of Flames based on current warmth
+        playerEffectController.warmthLevel = GetWarmthLevel(currentWarmth);
     }
 
     private void FixedUpdate()
     {
+        if (worldController.isInIntroAnimation)
+        {
+            return;
+        }
+
         // Gets the input, forms a vector 3 value and moves the player using the attached rigidbody
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
@@ -168,6 +178,32 @@ public class dummyPlayerController : MonoBehaviour
         else
         {
             return maxCompassAlpha * ((distance - minCompassDistance) / (maxCompassDistance - minCompassDistance));
+        }
+    }
+
+    private float GetWarmthLevel(float currentWarmth)
+    {
+        float ratio = currentWarmth / maximumWarmth;
+
+        if (ratio > 0.66f)
+        {
+            return 1f;
+        }
+        else if (ratio > 0.5f)
+        {
+            return 0.25f;
+        }
+        else if (ratio > 0.33f)
+        {
+            return 0.1f;
+        }
+        else if (ratio > 0.1)
+        {
+            return 0.05f;
+        }
+        else
+        {
+            return 0;
         }
     }
 
