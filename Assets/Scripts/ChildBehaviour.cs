@@ -17,6 +17,7 @@ public class ChildBehaviour : MonoBehaviour
     private Renderer childMaterial;
     private int playerFollowerNumber;
     private Transform mySeatPosition;
+    private GameObject imFollowing;
 
     public FollowerType followerType;
     public FollowerRequirement followerRequirement;
@@ -54,7 +55,7 @@ public class ChildBehaviour : MonoBehaviour
             childMaterial.material = childMaterialsList[UnityEngine.Random.Range(0, childMaterialsList.Length)];
         }
         
-        // Picks a random size for the child
+        // Picks a random size for the object
         childSize = UnityEngine.Random.Range(childSizeMin, childSizeMax);
         transform.localScale = new Vector3(1, 1, 1) * childSize;
     }
@@ -76,26 +77,63 @@ public class ChildBehaviour : MonoBehaviour
             {
                 PickedUp();
             }
-            else if(followerRequirement == FollowerRequirement.marshmallow)
+            else if(followerRequirement == FollowerRequirement.marshmallow && dpc.marshmallowCount > 0)
             {
-
+                // pick up marshmallow here, this child takes it
+                PickedUp();
+                dpc.marshmallowTaken = true;
+                dpc.childThatTookMarshmallow = gameObject;
             }
         }
         // if I have been picked up
         else if (isFollowingPlayer && !isDroppedOff)
         {
-            // lerp position to player's path
-            transform.position = Vector3.Lerp(transform.position, dpc.followerChainPositions[playerFollowerNumber-1], followLerpSpeed);
+            // lerp position to player's path. Children will follow first, then marshmallows, then wood. 
+            if(followerType == FollowerType.child)
+            {
+                transform.position = Vector3.Lerp(transform.position, dpc.followerChainPositions[playerFollowerNumber-1], followLerpSpeed);
+            }
+            else if(followerType == FollowerType.marshmallow)
+            {
+                transform.position = Vector3.Lerp(transform.position, dpc.followerChainPositions[dpc.GetFollowers() + playerFollowerNumber - 1], followLerpSpeed);
+            }
+            else if(followerType == FollowerType.wood)
+            {
+                transform.position = Vector3.Lerp(transform.position, dpc.followerChainPositions[dpc.GetFollowers() +  + dpc.marshmallowCount + playerFollowerNumber - 1], followLerpSpeed);
+            }
         }
 
-        if (isFollowingPlayer && !isDroppedOff && Vector3.Distance(player.transform.position, bonfire.transform.position) < dropOffDistance)
+        // Drop off conditions
+        if ((followerType == FollowerType.child || followerType == FollowerType.wood) && isFollowingPlayer && !isDroppedOff && Vector3.Distance(player.transform.position, bonfire.transform.position) < dropOffDistance)
         {
             DroppedOff();
         }
-        else if (isDroppedOff)
+        else if(followerType == FollowerType.marshmallow && dpc.marshmallowTaken)
         {
-            // lerp to he bonfire's position
-            transform.position = Vector3.Lerp(transform.position, mySeatPosition.position, followLerpSpeed);
+            // If im the last marshmallow, feed the child
+            if (dpc.marshmallowCount == playerFollowerNumber)
+            {
+                dpc.marshmallowTaken = false;
+                isFollowingPlayer = false;
+                isDroppedOff = true;
+                playerFollowerNumber = 0;
+                
+                dpc.marshmallowCount--;
+                imFollowing = dpc.childThatTookMarshmallow;
+            }
+        }
+
+        if (isDroppedOff)
+        {
+            if(followerType == FollowerType.child || followerType == FollowerType.wood)
+            {
+                // lerp to the bonfire's position
+                transform.position = Vector3.Lerp(transform.position, mySeatPosition.position, followLerpSpeed);
+            }
+            else if(followerType == FollowerType.marshmallow)
+            {
+                transform.position = Vector3.Lerp(transform.position, imFollowing.transform.position, followLerpSpeed);
+            }
         }
     }
 
@@ -103,11 +141,11 @@ public class ChildBehaviour : MonoBehaviour
     {
         isFollowingPlayer = false;
         isDroppedOff = true;
-        dpc.DecreaseFollowers();
         playerFollowerNumber = 0;
 
         if(followerType == FollowerType.child)
         {
+            dpc.DecreaseFollowers();
             // Gets my seat position around the bonfire
             mySeatPosition = bfs.bonfireSeats[bfs.getChildrenDroppedOff()].transform;
             bfs.IncreaseChildrenDroppedOff();
@@ -115,9 +153,14 @@ public class ChildBehaviour : MonoBehaviour
             //Player stops wamring up after they drop off the child
             dpc.isReloadingWarmthFromChild = true;
             // play sound
+
+            // show heart
+            Vector3 heartPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z + 1);
+            Instantiate(heart, heartPosition, heart.transform.rotation);
         }
         else if(followerType == FollowerType.wood)
         {
+            dpc.woodCount--;
             mySeatPosition = bonfire.transform;
             // Grow bonfire from here
             bfw.WoodDroppedOff();
@@ -127,22 +170,36 @@ public class ChildBehaviour : MonoBehaviour
     private void PickedUp()
     {
         isFollowingPlayer = true;
-        dpc.IncreaseFollowers();
-        // Gets my follower position
-        playerFollowerNumber = dpc.GetFollowers();
+
+        if (followerType == FollowerType.child)
+        {
+            dpc.IncreaseFollowers();
+            playerFollowerNumber = dpc.GetFollowers(); // Gets my follower position
+        
+            // show heart
+            Vector3 heartPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z + 1);
+            Instantiate(heart, heartPosition, heart.transform.rotation);
+
+            //Player gets to refuel warmth if it picks up a child
+            dpc.isReloadingWarmthFromChild = true;
+            //TODO play sound
+
+        }
+        else if(followerType == FollowerType.marshmallow)
+        {
+            dpc.marshmallowCount++;
+            playerFollowerNumber = dpc.marshmallowCount;
+        }
+        else if (followerType == FollowerType.wood)
+        {
+            dpc.woodCount++;
+            playerFollowerNumber = dpc.woodCount;
+        }
+
         // expands list if necessary
-        if(dpc.followerChainPositions.Count < dpc.GetFollowers())
+        if (dpc.followerChainPositions.Count < dpc.GetFollowers() + dpc.marshmallowCount + dpc.woodCount)
         {
             dpc.followerChainPositions.Add(new Vector3());
         }
-        
-        // show heart
-        Vector3 heartPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z + 1);
-        Instantiate(heart, heartPosition, heart.transform.rotation);
-
-        //Player gets to refuel warmth if it picks up a child
-        dpc.isReloadingWarmthFromChild = true;
-
-        //TODO play sound
     }
 }

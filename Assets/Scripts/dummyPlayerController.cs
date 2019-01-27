@@ -13,9 +13,14 @@ public class dummyPlayerController : MonoBehaviour
 
     private Rigidbody rb;
     private int followerCount = 0;
+    public int marshmallowCount = 0;
+    public int woodCount = 0;
+    public bool marshmallowTaken = false;
+    public GameObject childThatTookMarshmallow;
 
     private float currentWarmth; //If this hits zero, the player becomes too sad to continue :(
     public float maximumWarmth = 100f;
+    public float minDistanceForWarmth = 3f; //How close the player needs to be to a heat source to gain warmth
     public float warmthLossPerSecond = 1f;
     public float warmthGainPerSecond = 20f;
 
@@ -31,7 +36,7 @@ public class dummyPlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
 
         currentWarmth = maximumWarmth;
-        // Initializes the follower array
+        // Initializes the follower list
         for(int i = 0; i < followerChainPositions.Count; i++)
         {
             followerChainPositions[i] = new Vector3(0, 0.5f, 0);
@@ -43,6 +48,8 @@ public class dummyPlayerController : MonoBehaviour
     {
         if(currentWarmth < 0)
         {
+            Debug.Log("Game Over!");
+
             warmthText.text = "I AM SAD :(";
 
             return;
@@ -63,7 +70,9 @@ public class dummyPlayerController : MonoBehaviour
         }else
         {
             //Check if Player is near the Bonfire
-            if (worldController.IsPlayerNearBonfire())
+            float closestDistance = worldController.GetDistanceToBonfire();
+
+            if (closestDistance <= minDistanceForWarmth)
             {
                 if (currentWarmth < maximumWarmth)
                 {
