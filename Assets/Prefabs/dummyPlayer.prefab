@@ -421,6 +421,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   worldController: {fileID: 0}
+  warmthBarUI: {fileID: 0}
   moveSpeed: 5
   pathFollowerSteps: 10
   pathOffset: 5
@@ -573,6 +574,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7081881786367869301}
     m_Modifications:
+    - target: {fileID: 5971131527448715492, guid: 80ee67f107fb18c41ab9b693ad956257,
+        type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5971131527448715492, guid: 80ee67f107fb18c41ab9b693ad956257,
+        type: 3}
+      propertyPath: InitialModule.startLifetime.minScalar
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5971131527448715492, guid: 80ee67f107fb18c41ab9b693ad956257,
         type: 3}
       propertyPath: InitialModule.startSize.scalar

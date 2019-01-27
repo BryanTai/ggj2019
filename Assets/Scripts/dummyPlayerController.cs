@@ -2,12 +2,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class dummyPlayerController : MonoBehaviour
 {
     public WorldController worldController;
     private GameObject bonfire;
     private BonfireWarmth bfw;
+    public Image warmthBarUI;
 
     public float moveSpeed;
     public int pathFollowerSteps; // the distance followers will follow the player in a chain
@@ -23,7 +25,7 @@ public class dummyPlayerController : MonoBehaviour
     public GameObject childThatTookMarshmallow;
 
     [Header("Player Warmth Fields")]
-    private float currentWarmth; //If this hits zero, the player becomes too sad to continue :(
+    public float currentWarmth; //If this hits zero, the player becomes too sad to continue :(
     public float maximumWarmth = 30f;
     //public float minDistanceForWarmth = 3f; //How close the player needs to be to a heat source to gain warmth
     public float warmthLossPerSecond = 1f;
@@ -52,6 +54,9 @@ public class dummyPlayerController : MonoBehaviour
         bonfire = GameObject.FindGameObjectWithTag("Bonfire");
         bfw = bonfire.GetComponent<BonfireWarmth>();
 
+        warmthBarUI = GameObject.FindGameObjectWithTag("warmthbar").GetComponent<Image>();
+        warmthBarUI.fillAmount = 1;
+
         InitialCompassPosition = CompassGroupTransform.localPosition;
 
         currentWarmth = maximumWarmth;
@@ -67,13 +72,6 @@ public class dummyPlayerController : MonoBehaviour
     {
         if (worldController.isInIntroAnimation)
         {
-            return;
-        }
-
-        if(currentWarmth < 0)
-        {
-            Debug.Log("Game Over!");
-
             return;
         }
 
@@ -189,6 +187,7 @@ public class dummyPlayerController : MonoBehaviour
     {
         float ratio = currentWarmth / maximumWarmth;
         playerEffectController.glowLevel = ratio;
+        warmthBarUI.fillAmount = ratio;
 
         if (ratio > 0.66f)
         {
