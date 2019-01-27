@@ -42,8 +42,10 @@ public class dummyPlayerController : MonoBehaviour
     public float CompassDistance = 9f; //Places the compass glow at a set distance away from the player
     public float minCompassDistance = 10f; //Compass alpha is 0 at this distance or less
     public float maxCompassDistance = 20f; //Compass alpha is 1 at this distance or more
+    private float minCompassFadeDistance = 30f; //Compass alpha starts fading again after this distance
+    private float maxCompassFadeDistance = 40f; //TODO
     public float maxCompassAlpha = 0.2f;
-
+    private float minCompassFadeAlpha = 0.05f; //min
 
     private Vector3 InitialCompassPosition;
 
