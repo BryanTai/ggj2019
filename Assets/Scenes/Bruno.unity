@@ -474,12 +474,12 @@ PrefabInstance:
     - target: {fileID: 7081881786367869301, guid: 49654c3ac49753a46a4fafdf4f12dc72,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 26
+      value: 4.21
       objectReference: {fileID: 0}
     - target: {fileID: 7081881786367869301, guid: 49654c3ac49753a46a4fafdf4f12dc72,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7081881786367869301, guid: 49654c3ac49753a46a4fafdf4f12dc72,
         type: 3}
@@ -525,6 +525,65 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 493913793, guid: 49654c3ac49753a46a4fafdf4f12dc72, type: 3}
+      propertyPath: warmthLevel
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3043687371540049011, guid: 49654c3ac49753a46a4fafdf4f12dc72,
+        type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3043687371540049011, guid: 49654c3ac49753a46a4fafdf4f12dc72,
+        type: 3}
+      propertyPath: VelocityModule.radial.scalar
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3043687371540049011, guid: 49654c3ac49753a46a4fafdf4f12dc72,
+        type: 3}
+      propertyPath: InitialModule.startLifetime.minScalar
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3043687371540049011, guid: 49654c3ac49753a46a4fafdf4f12dc72,
+        type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3043687371540049011, guid: 49654c3ac49753a46a4fafdf4f12dc72,
+        type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3043687371540049011, guid: 49654c3ac49753a46a4fafdf4f12dc72,
+        type: 3}
+      propertyPath: InitialModule.startSize.minScalar
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7691421101692690182, guid: 49654c3ac49753a46a4fafdf4f12dc72,
+        type: 3}
+      propertyPath: VelocityModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7691421101692690182, guid: 49654c3ac49753a46a4fafdf4f12dc72,
+        type: 3}
+      propertyPath: InitialModule.startSpeed.minScalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7691421101692690182, guid: 49654c3ac49753a46a4fafdf4f12dc72,
+        type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7691421101692690182, guid: 49654c3ac49753a46a4fafdf4f12dc72,
+        type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7691421101692690182, guid: 49654c3ac49753a46a4fafdf4f12dc72,
+        type: 3}
+      propertyPath: VelocityModule.speedModifier.scalar
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49654c3ac49753a46a4fafdf4f12dc72, type: 3}
