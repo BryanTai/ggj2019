@@ -3384,11 +3384,6 @@ PrefabInstance:
       propertyPath: worldController
       value: 
       objectReference: {fileID: 411162510}
-    - target: {fileID: 7081881786367869300, guid: 49654c3ac49753a46a4fafdf4f12dc72,
-        type: 3}
-      propertyPath: maximumWarmth
-      value: 30
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49654c3ac49753a46a4fafdf4f12dc72, type: 3}
 --- !u!1 &1420377673 stripped
