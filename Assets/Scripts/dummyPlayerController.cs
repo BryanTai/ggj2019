@@ -6,6 +6,8 @@ using UnityEngine;
 public class dummyPlayerController : MonoBehaviour
 {
     public WorldController worldController;
+    private GameObject bonfire;
+    private BonfireWarmth bfw;
 
     public float moveSpeed;
     public int pathFollowerSteps; // the distance followers will follow the player in a chain
@@ -23,7 +25,7 @@ public class dummyPlayerController : MonoBehaviour
     [Header("Player Warmth Fields")]
     private float currentWarmth; //If this hits zero, the player becomes too sad to continue :(
     public float maximumWarmth = 30f;
-    public float minDistanceForWarmth = 3f; //How close the player needs to be to a heat source to gain warmth
+    //public float minDistanceForWarmth = 3f; //How close the player needs to be to a heat source to gain warmth
     public float warmthLossPerSecond = 1f;
     public float warmthGainPerSecond = 20f;
 
@@ -47,6 +49,8 @@ public class dummyPlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        bonfire = GameObject.FindGameObjectWithTag("Bonfire");
+        bfw = bonfire.GetComponent<BonfireWarmth>();
 
         InitialCompassPosition = CompassGroupTransform.localPosition;
 
@@ -90,7 +94,7 @@ public class dummyPlayerController : MonoBehaviour
             //Check if Player is near the Bonfire
             float closestDistance = worldController.GetDistanceToBonfire();
 
-            if (closestDistance <= minDistanceForWarmth)
+            if (closestDistance <= bfw.bonfireWarmthRadius)
             {
                 if (currentWarmth < maximumWarmth)
                 {

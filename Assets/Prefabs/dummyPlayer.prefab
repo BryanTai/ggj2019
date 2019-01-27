@@ -430,7 +430,6 @@ MonoBehaviour:
   marshmallowTaken: 0
   childThatTookMarshmallow: {fileID: 0}
   maximumWarmth: 30
-  minDistanceForWarmth: 3
   warmthLossPerSecond: 1
   warmthGainPerSecond: 20
   isReloadingWarmthFromChild: 0

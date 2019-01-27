@@ -10,16 +10,17 @@ public class WorldController : MonoBehaviour
 
     public BonfireWarmth bonfireWarmth;
 
-    public const int TOTAL_CHILDREN = 5;
+    public const int TOTAL_CHILDREN = 8;
+    public GameObject childrenParent;
 
     public bool isInIntroAnimation = true;
     private float introTimer = 0;
-    private const float introLength = 12f;
+    private const float introLength = 13f;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        childrenParent.SetActive(false);
     }
 
     // Update is called once per frame
@@ -31,6 +32,7 @@ public class WorldController : MonoBehaviour
             if(introTimer > introLength)
             {
                 isInIntroAnimation = false;
+                childrenParent.SetActive(true);
             }
         }
     }

@@ -19,6 +19,8 @@ public class ChildBehaviour : MonoBehaviour
 
     public FollowerType followerType;
     public FollowerRequirement followerRequirement;
+    public GameObject marshmallowBlurb;
+    public float marshmallowBlurbDistance;
     public float pickupDistance; // The distance the player needs to be to pick me up
     public float dropOffDistance; // The distance the player needs to be to drop me off at the bonfire
     public float followDistance; // the distance at which I will keep when following the player
@@ -27,7 +29,8 @@ public class ChildBehaviour : MonoBehaviour
     public float childSizeMin;
     public float childSizeMax;
     public bool randomizeColour = false; // Whether or not to randomize the children's color
-    public Material[] childMaterialsList;
+    public ParticleSystem fireParticleSystem; // Particle system for the fire effects on the child
+    public Color[] randomColors; // An array of colors the child will pick from on start up
     GameObject player; // the player object reference
     dummyPlayerController dpc;
     GameObject bonfire;
@@ -50,7 +53,10 @@ public class ChildBehaviour : MonoBehaviour
         if (randomizeColour)
         {
             // picks a random material to use to display the colour of the child
-            childMaterial.material = childMaterialsList[UnityEngine.Random.Range(0, childMaterialsList.Length)];
+            //childMaterial.material = childMaterialsList[UnityEngine.Random.Range(0, childMaterialsList.Length)];
+#pragma warning disable CS0618 // Type or member is obsolete
+            fireParticleSystem.startColor = randomColors[UnityEngine.Random.Range(0, randomColors.Length)];
+#pragma warning restore CS0618 // Type or member is obsolete
         }
         
         // Picks a random size for the object
@@ -123,15 +129,35 @@ public class ChildBehaviour : MonoBehaviour
 
         if (isDroppedOff)
         {
-            if(followerType == FollowerType.child || followerType == FollowerType.wood)
+            if(followerType == FollowerType.child)
             {
                 // lerp to the bonfire's position
                 transform.position = Vector3.Lerp(transform.position, mySeatPosition.position, followLerpSpeed);
+            }
+            else if(followerType == FollowerType.wood)
+            {
+                // lerp to the bonfire's position
+                transform.position = Vector3.Lerp(transform.position, mySeatPosition.position, followLerpSpeed);
+
+                if(Vector3.Distance(transform.position, mySeatPosition.position) < 1)
+                {
+                    Destroy(gameObject);
+                }
             }
             else if(followerType == FollowerType.marshmallow)
             {
                 transform.position = Vector3.Lerp(transform.position, imFollowing.transform.position, followLerpSpeed);
             }
+        }
+
+        // Display marshmallow blurb when the player is near me
+        if(followerRequirement == FollowerRequirement.marshmallow && Vector3.Distance(transform.position, dpc.transform.position) < marshmallowBlurbDistance && !isFollowingPlayer && !isDroppedOff)
+        {
+            marshmallowBlurb.SetActive(true);
+        }
+        else
+        {
+            marshmallowBlurb.SetActive(false);
         }
     }
 
