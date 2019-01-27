@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 636455858}
   - component: {fileID: 636455857}
   - component: {fileID: 8994694869380027723}
+  - component: {fileID: 1098016321212757972}
+  - component: {fileID: 5874014504859536407}
   m_Layer: 0
   m_Name: modelBonfire
   m_TagString: Bonfire
@@ -28,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 636455856}
   m_LocalRotation: {x: -0.06732829, y: -0.028876984, z: -0.026629826, w: 0.9969573}
   m_LocalPosition: {x: -9.61, y: 0.44, z: 12.33}
-  m_LocalScale: {x: 1.4539888, y: 1.3367391, z: 1.1283535}
+  m_LocalScale: {x: 2.1067572, y: 1.9368682, z: 1.634928}
   m_Children:
   - {fileID: 1322384760}
   - {fileID: 5460759839506486939}
@@ -102,6 +104,33 @@ MonoBehaviour:
   - {fileID: 7345847604341156942}
   - {fileID: 3901287904028711904}
   - {fileID: 5226306022733190118}
+--- !u!135 &1098016321212757972
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 636455856}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.8998524
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5874014504859536407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 636455856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b6c0609555fb4842b47dbb6c34ebbb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bonfireWarmthRadius: 2
+  warmthIncrementWood: 1
 --- !u!1 &129176117752251924
 GameObject:
   m_ObjectHideFlags: 0
@@ -721,31 +750,31 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 779322076, guid: f25fe9fe1ca6645b8a0d2610e0d97268, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.25
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 779322076, guid: f25fe9fe1ca6645b8a0d2610e0d97268, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.44
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 779322076, guid: f25fe9fe1ca6645b8a0d2610e0d97268, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.91
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 779322076, guid: f25fe9fe1ca6645b8a0d2610e0d97268, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.76087874
+      value: -0.5006413
       objectReference: {fileID: 0}
     - target: {fileID: 779322076, guid: f25fe9fe1ca6645b8a0d2610e0d97268, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.10888564
+      value: 0.35858345
       objectReference: {fileID: 0}
     - target: {fileID: 779322076, guid: f25fe9fe1ca6645b8a0d2610e0d97268, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.053694632
+      value: 0.49652705
       objectReference: {fileID: 0}
     - target: {fileID: 779322076, guid: f25fe9fe1ca6645b8a0d2610e0d97268, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.6374357
+      value: 0.6117493
       objectReference: {fileID: 0}
     - target: {fileID: 779322076, guid: f25fe9fe1ca6645b8a0d2610e0d97268, type: 3}
       propertyPath: m_RootOrder
@@ -753,15 +782,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 779322076, guid: f25fe9fe1ca6645b8a0d2610e0d97268, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -106.599
+      value: -104.39
       objectReference: {fileID: 0}
     - target: {fileID: 779322076, guid: f25fe9fe1ca6645b8a0d2610e0d97268, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -50.531006
+      value: -193.6
       objectReference: {fileID: 0}
     - target: {fileID: 779322076, guid: f25fe9fe1ca6645b8a0d2610e0d97268, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 55.051994
+      value: 268.7
       objectReference: {fileID: 0}
     - target: {fileID: 779322076, guid: f25fe9fe1ca6645b8a0d2610e0d97268, type: 3}
       propertyPath: m_LocalScale.x
@@ -778,6 +807,38 @@ PrefabInstance:
     - target: {fileID: 779322075, guid: f25fe9fe1ca6645b8a0d2610e0d97268, type: 3}
       propertyPath: m_Name
       value: Torch
+      objectReference: {fileID: 0}
+    - target: {fileID: 886353401, guid: f25fe9fe1ca6645b8a0d2610e0d97268, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 886353401, guid: f25fe9fe1ca6645b8a0d2610e0d97268, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.208
+      objectReference: {fileID: 0}
+    - target: {fileID: 886353401, guid: f25fe9fe1ca6645b8a0d2610e0d97268, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.44
+      objectReference: {fileID: 0}
+    - target: {fileID: 779322078, guid: f25fe9fe1ca6645b8a0d2610e0d97268, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 779322078, guid: f25fe9fe1ca6645b8a0d2610e0d97268, type: 3}
+      propertyPath: NoiseModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 886353399, guid: f25fe9fe1ca6645b8a0d2610e0d97268, type: 3}
+      propertyPath: m_Name
+      value: Camp light
+      objectReference: {fileID: 0}
+    - target: {fileID: 886353399, guid: f25fe9fe1ca6645b8a0d2610e0d97268, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 886353400, guid: f25fe9fe1ca6645b8a0d2610e0d97268, type: 3}
+      propertyPath: m_Intensity
+      value: 1.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f25fe9fe1ca6645b8a0d2610e0d97268, type: 3}
