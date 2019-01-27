@@ -7,12 +7,16 @@ public class PlayerEffectController : MonoBehaviour
     public ParticleSystem fireEffect;
     public ParticleSystem fireEmbers;
 
+    public Light glowEffect;
+
     //set warmth level between 0 and 1
     // 0 = cold, no fire effect
     // 1 = warm, full fire effect
     public float warmthLevel = 1;
-
     
+    public float glowLevel = 1;
+
+    private float maxGlow = 7f;
 
     private void Update()
     {
@@ -29,5 +33,8 @@ public class PlayerEffectController : MonoBehaviour
 
         var fireEmbersSpeed = fireEmbers.velocityOverLifetime;
         fireEmbersSpeed.speedModifierMultiplier = Mathf.Lerp(0.5f, 1.0f, warmthLevel);
+
+        //glow modulation
+        glowEffect.range = maxGlow * glowLevel;
     }
 }

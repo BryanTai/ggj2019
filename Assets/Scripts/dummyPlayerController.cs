@@ -108,7 +108,7 @@ public class dummyPlayerController : MonoBehaviour
         }
 
         //Set the amount of Flames based on current warmth
-        playerEffectController.warmthLevel = GetWarmthLevel(currentWarmth);
+        UpdatePlayerEffects(currentWarmth);
     }
 
     private void FixedUpdate()
@@ -181,29 +181,30 @@ public class dummyPlayerController : MonoBehaviour
         }
     }
 
-    private float GetWarmthLevel(float currentWarmth)
+    private void UpdatePlayerEffects(float currentWarmth)
     {
         float ratio = currentWarmth / maximumWarmth;
+        playerEffectController.glowLevel = ratio;
 
         if (ratio > 0.66f)
         {
-            return 1f;
+            playerEffectController.warmthLevel = 1f;
         }
         else if (ratio > 0.5f)
         {
-            return 0.25f;
+            playerEffectController.warmthLevel = 0.25f;
         }
         else if (ratio > 0.33f)
         {
-            return 0.1f;
+            playerEffectController.warmthLevel = 0.1f;
         }
         else if (ratio > 0.1)
         {
-            return 0.05f;
+            playerEffectController.warmthLevel = 0.05f;
         }
         else
         {
-            return 0;
+            playerEffectController.warmthLevel = 0;
         }
     }
 
