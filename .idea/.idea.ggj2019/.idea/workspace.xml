@@ -1,28 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2cf32840-6d12-4730-8834-7fd39905d595" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Animations/ChildAnimation_End_1.anim" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Animations/ChildAnimation_End_1.anim.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Animations/ChildAnimation_End_2.anim" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Animations/ChildAnimation_End_2.anim.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Animations/ChildAnimation_End_3.anim" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Animations/ChildAnimation_End_3.anim.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Animations/ChildAnimation_End_4.anim" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Animations/ChildAnimation_End_4.anim.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Animations/ChildAnimation_End_5.anim" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Animations/ChildAnimation_End_5.anim.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Child.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Child.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Child_2.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Child_2.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Child_3.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Child_3.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Child_4.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Child_4.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Child_5.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Child_5.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/BeginningSceneElementsGroup.unitypackage.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/WorldController.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/WorldController.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChildBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ChildBehaviour.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameOver.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameOver.cs" afterDir="false" />
-    </list>
+    <list default="true" id="2cf32840-6d12-4730-8834-7fd39905d595" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -300,12 +279,12 @@
       <option name="presentableId" value="Default" />
       <updated>1548538972411</updated>
       <workItem from="1548538976405" duration="32000" />
-      <workItem from="1548542233292" duration="8636000" />
+      <workItem from="1548542233292" duration="8873000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3326000" />
+    <option name="totallyTimeSpent" value="3563000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="6" y="82" width="1189" height="816" extended-state="0" />

@@ -11,8 +11,13 @@ GameObject:
   - component: {fileID: 1098317213}
   - component: {fileID: 1098317214}
   - component: {fileID: 1098317215}
+
   - component: {fileID: 6229759869005308433}
   - component: {fileID: 54646524148413148}
+
+  - component: {fileID: 1393450830}
+  - component: {fileID: 1393450831}
+
   m_Layer: 0
   m_Name: MusicPlayer
   m_TagString: Untagged
@@ -696,8 +701,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 948f4100a11a5c24981795d21301da5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   volumeTrigger: {fileID: 7081881785954922209}
   volumeLayer:
     serializedVersion: 2
@@ -841,8 +846,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b364829a5a4c6ba4689f570da5a473a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   worldController: {fileID: 0}
   warmthBarUI: {fileID: 0}
   moveSpeed: 5
@@ -854,7 +859,7 @@ MonoBehaviour:
   marshmallowTaken: 0
   childThatTookMarshmallow: {fileID: 0}
   currentWarmth: 0
-  maximumWarmth: 30
+  maximumWarmth: 20
   warmthLossPerSecond: 1
   warmthGainPerSecond: 20
   isReloadingWarmthFromChild: 0
@@ -892,8 +897,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e685dedc3f2836f47aba881f5dfdcd3a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   fireEffect: {fileID: 3043687371540049011}
   fireEmbers: {fileID: 7691421101692690182}
   glowEffect: {fileID: 1943063560}

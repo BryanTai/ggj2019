@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WorldController : MonoBehaviour
 {
@@ -12,6 +13,11 @@ public class WorldController : MonoBehaviour
 
     public const int TOTAL_CHILDREN = 8;
     public GameObject childrenParent;
+    public Image logo;
+    public float logoTime;
+    public float logoTimeToDisappear;
+    private float logoDisappearStartTime;
+    private float logoDisappearEndTime;
 
     public bool isInIntroAnimation = true;
     private float introTimer = 0;
@@ -21,6 +27,12 @@ public class WorldController : MonoBehaviour
     void Start()
     {
         childrenParent.SetActive(false);
+
+        // Activates logo and sets up the timer variables
+        logo.gameObject.SetActive(true);
+        logoDisappearStartTime = Time.time + logoTime;
+        logoDisappearEndTime = Time.time + logoTime + logoTimeToDisappear;
+
     }
 
     // Update is called once per frame
@@ -34,6 +46,16 @@ public class WorldController : MonoBehaviour
                 isInIntroAnimation = false;
                 childrenParent.SetActive(true);
             }
+        }
+
+        // Fades out the logo after a period of time, and then disables the logo image after it ends
+        if(Time.time >= logoDisappearStartTime && Time.time < logoDisappearEndTime)
+        {
+            logo.color = new Color(1,1,1, 1-(Time.time-logoDisappearStartTime)/(logoDisappearEndTime-logoDisappearStartTime));
+        }
+        else if(Time.time >= logoDisappearEndTime)
+        {
+            logo.gameObject.SetActive(false);
         }
     }
 

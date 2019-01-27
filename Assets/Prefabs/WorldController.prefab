@@ -225,9 +225,15 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   bonfire: {fileID: 0}
   bonfireWarmth: {fileID: 0}
   childrenParent: {fileID: 0}
+  logo: {fileID: 0}
+  logoTime: 5
+  logoTimeToDisappear: 1
   isInIntroAnimation: 1
 --- !u!114 &430436648794945287
 MonoBehaviour:
