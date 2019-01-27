@@ -12,16 +12,27 @@ public class WorldController : MonoBehaviour
 
     public const int TOTAL_CHILDREN = 5;
 
+    public bool isInIntroAnimation = true;
+    private float introTimer = 0;
+    private const float introLength = 12f;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (isInIntroAnimation)
+        {
+            introTimer += Time.deltaTime;
+            if(introTimer > introLength)
+            {
+                isInIntroAnimation = false;
+            }
+        }
     }
 
     public bool IsPlayerNearBonfire()
