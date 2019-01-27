@@ -17,14 +17,14 @@ using UnityEngine.Audio;
         private float m_QuarterNote; // use to calculate lenght of quarter note in ms
         
         
-        private void Start()
+        void Start()
         {
             m_QuarterNote = 60 / bpm;
             m_TransitionIn = m_QuarterNote;
             m_TransitionOut = m_QuarterNote * 32; // 8 bars fade out
         }
 
-        private void OnTriggerEnter(Collider other)
+        void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag("TriggerZone"))
             {
@@ -32,11 +32,12 @@ using UnityEngine.Audio;
             }
         }
 
-        private void OnTriggerExit(Collider other)
+        void OnTriggerExit(Collider other)
         {
             if (other.CompareTag("TriggerZone"))
             {
                 outOfTrigger.TransitionTo(m_TransitionOut);
             }
         }
+        
     }
