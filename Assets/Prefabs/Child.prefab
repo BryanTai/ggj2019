@@ -426,6 +426,11 @@ PrefabInstance:
       propertyPath: InitialModule.startColor.maxColor.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5971131527448715492, guid: 80ee67f107fb18c41ab9b693ad956257,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.scalar
+      value: -0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 3503793256621271501, guid: 80ee67f107fb18c41ab9b693ad956257,
         type: 3}
       propertyPath: m_LocalPosition.x
