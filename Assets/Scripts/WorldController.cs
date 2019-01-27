@@ -43,6 +43,7 @@ public class WorldController : MonoBehaviour
         return playerDistance < bonfireWarmth.bonfireWarmthRadius;
     }
 
+    //TODO this isnt being used
     public GameObject GetClosestHeatSourceToPlayer()
     {
         GameObject currentClosestGameObject = bonfire;

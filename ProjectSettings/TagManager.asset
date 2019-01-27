@@ -8,6 +8,7 @@ TagManager:
   - Bonfire
   - bonfire Seat
   - marshmallow
+  - warmthbar
   layers:
   - Default
   - TransparentFX
