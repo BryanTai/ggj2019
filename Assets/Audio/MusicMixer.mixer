@@ -26,8 +26,8 @@ AudioMixerController:
   - guids:
     - 144705a8ae3ac4b0d8e843a610ee2f2d
     name: JustMaster
-  m_CurrentViewIndex: 1
-  m_TargetSnapshot: {fileID: 24500006}
+  m_CurrentViewIndex: 0
+  m_TargetSnapshot: {fileID: 245976390859365034}
 --- !u!243 &24300002
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
@@ -68,7 +68,7 @@ AudioMixerSnapshotController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Quiet
+  m_Name: Cold
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: 32667ad4c95ca45759a1425e0aaacb0e
   m_FloatValues:
@@ -81,7 +81,7 @@ AudioMixerGroupController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Quiet
+  m_Name: Cold
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: a7e39a380905543a3b52bf6b120d502d
   m_Children: []
@@ -99,7 +99,7 @@ AudioMixerGroupController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Action
+  m_Name: Warm
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: 8a21b8a8966674e0fafe8c04fc51645e
   m_Children: []
@@ -145,10 +145,11 @@ AudioMixerSnapshotController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Action
+  m_Name: Warm
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: cd312ee879bad450a8073233c7c0e029
   m_FloatValues:
     e7e6409227f6a4a0db4b594b64bb5d0a: 0.025578512
+    1d93242d702ea48dd987e8ce8824a603: -50.103996
     fc9a4e4ff6ffd45a1b2bf86c655a0840: -9.833286
   m_TransitionOverrides: {}

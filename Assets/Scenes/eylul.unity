@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641234, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571334, b: 0.3069219, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -238,7 +238,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 243288992180122106, guid: 5ead16885bb64491ebf9b6272e2fb6b6,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 5e6e5cc3340884943870931e022a9500, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 712c4a72ecc17414989f441f9af06cf0, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.25
   m_Pitch: 1
@@ -335,7 +335,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 243665793441341250, guid: 5ead16885bb64491ebf9b6272e2fb6b6,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: dc62e44c423d144cfb98b14a85c723f3, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 597bf1614b1c24357b88c1639b357845, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.25
   m_Pitch: 1
@@ -435,7 +435,7 @@ GameObject:
   - component: {fileID: 1713469293}
   m_Layer: 0
   m_Name: Trigger
-  m_TagString: Untagged
+  m_TagString: TriggerZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
