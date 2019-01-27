@@ -110,6 +110,7 @@ MonoBehaviour:
   - {fileID: 1058153967828912482}
   - {fileID: 2500071915593751862}
   - {fileID: 9000742671420949927}
+  childrenDroppedOff: 0
 --- !u!135 &1098016321212757972
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -136,7 +137,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bonfireWarmthRadius: 3
-  warmthIncrementWood: 2
+  warmthIncrementWood: 2.5
   dirt: {fileID: 0}
   dirtScaleModifier: 0.2
 --- !u!1 &129176117752251924
@@ -1181,6 +1182,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1551145669994420761, guid: f2d0505948c19fe48b635a64b0188728,
+        type: 3}
+      propertyPath: InitialModule.startLifetime.minScalar
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1551145669994420761, guid: f2d0505948c19fe48b635a64b0188728,
+        type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1551145669994420761, guid: f2d0505948c19fe48b635a64b0188728,
+        type: 3}
+      propertyPath: InitialModule.maxNumParticles
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 1551145669994420761, guid: f2d0505948c19fe48b635a64b0188728,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.scalar
+      value: -0.05
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2d0505948c19fe48b635a64b0188728, type: 3}
