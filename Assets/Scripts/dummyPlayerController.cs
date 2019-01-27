@@ -25,7 +25,7 @@ public class dummyPlayerController : MonoBehaviour
     public GameObject childThatTookMarshmallow;
 
     [Header("Player Warmth Fields")]
-    private float currentWarmth; //If this hits zero, the player becomes too sad to continue :(
+    public float currentWarmth; //If this hits zero, the player becomes too sad to continue :(
     public float maximumWarmth = 30f;
     //public float minDistanceForWarmth = 3f; //How close the player needs to be to a heat source to gain warmth
     public float warmthLossPerSecond = 1f;
@@ -74,13 +74,6 @@ public class dummyPlayerController : MonoBehaviour
     {
         if (worldController.isInIntroAnimation)
         {
-            return;
-        }
-
-        if(currentWarmth < 0)
-        {
-            Debug.Log("Game Over!");
-
             return;
         }
 
