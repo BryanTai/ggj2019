@@ -4,7 +4,8 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - outOfTrigger: {fileID: 24500006, guid: 5ead16885bb64491ebf9b6272e2fb6b6, type: 2}
+  - outOfTrigger: {fileID: 245881817729991972, guid: 5ead16885bb64491ebf9b6272e2fb6b6,
+      type: 2}
   - inTrigger: {fileID: 245976390859365034, guid: 5ead16885bb64491ebf9b6272e2fb6b6,
       type: 2}
   - stingSource: {instanceID: 0}
