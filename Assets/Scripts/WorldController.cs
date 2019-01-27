@@ -58,4 +58,9 @@ public class WorldController : MonoBehaviour
     {
         return Vector3.Distance(player.transform.position, bonfire.transform.position);
     }
+
+    public Vector3 GetDirectionToBonfire()
+    {
+        return player.transform.position - bonfire.transform.position;
+    }
 }
