@@ -47,6 +47,7 @@ public class dummyPlayerController : MonoBehaviour
     private float minCompassFadeAlpha = 0.05f; //min
 
     private Vector3 InitialCompassPosition;
+    private bool isGameOver = false;
 
     // Start is called before the first frame update
     void Start()
@@ -68,10 +69,16 @@ public class dummyPlayerController : MonoBehaviour
         }
     }
 
+    public void SetGameOver()
+    {
+        isGameOver = true;
+        warmthBarUI.gameObject.SetActive(false);
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if (worldController.isInIntroAnimation)
+        if (worldController.isInIntroAnimation || isGameOver)
         {
             return;
         }
@@ -116,7 +123,7 @@ public class dummyPlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (worldController.isInIntroAnimation)
+        if (worldController.isInIntroAnimation || isGameOver)
         {
             return;
         }
