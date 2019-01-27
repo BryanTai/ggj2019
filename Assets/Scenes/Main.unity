@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 611182437}
-  m_IndirectSpecularColor: {r: 0.008942884, g: 0.038071446, b: 0.12746082, a: 1}
+  m_IndirectSpecularColor: {r: 0.008966631, g: 0.03811966, b: 0.12750202, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3317,11 +3317,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2399230108767972752, guid: fca73d2e3af8cf043a785bc3e723096f,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8567061436639052173, guid: fca73d2e3af8cf043a785bc3e723096f,
         type: 3}
       propertyPath: childSizeMin
@@ -3331,6 +3326,11 @@ PrefabInstance:
         type: 3}
       propertyPath: childSizeMax
       value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2399230108767972752, guid: fca73d2e3af8cf043a785bc3e723096f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fca73d2e3af8cf043a785bc3e723096f, type: 3}
@@ -4425,6 +4425,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: modelBonfire
       objectReference: {fileID: 0}
+    - target: {fileID: 5874014504859536407, guid: 561656c84bbbf4c39997202064c049c9,
+        type: 3}
+      propertyPath: dirt
+      value: 
+      objectReference: {fileID: 1134292661}
     - target: {fileID: 1055042561, guid: 561656c84bbbf4c39997202064c049c9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.34596497
@@ -4469,11 +4474,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -87.857
       objectReference: {fileID: 0}
-    - target: {fileID: 5874014504859536407, guid: 561656c84bbbf4c39997202064c049c9,
-        type: 3}
-      propertyPath: dirt
-      value: 
-      objectReference: {fileID: 1134292661}
     - target: {fileID: 9198356834025350269, guid: 561656c84bbbf4c39997202064c049c9,
         type: 3}
       propertyPath: InitialModule.maxNumParticles
@@ -4784,11 +4784,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2399230108767972752, guid: fca73d2e3af8cf043a785bc3e723096f,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8567061436639052173, guid: fca73d2e3af8cf043a785bc3e723096f,
         type: 3}
       propertyPath: childSizeMin
@@ -4800,6 +4795,11 @@ PrefabInstance:
       value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 1373015281601899817, guid: fca73d2e3af8cf043a785bc3e723096f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2399230108767972752, guid: fca73d2e3af8cf043a785bc3e723096f,
         type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -5020,7 +5020,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1639356511}
   - component: {fileID: 1639356510}
-  - component: {fileID: 1639356509}
   - component: {fileID: 1639356508}
   - component: {fileID: 1639356512}
   m_Layer: 0
@@ -5049,14 +5048,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!81 &1639356509
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1639356507}
-  m_Enabled: 1
 --- !u!20 &1639356510
 Camera:
   m_ObjectHideFlags: 0
@@ -5277,15 +5268,15 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2399230108767972752, guid: fca73d2e3af8cf043a785bc3e723096f,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1373015281601899817, guid: fca73d2e3af8cf043a785bc3e723096f,
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2399230108767972752, guid: fca73d2e3af8cf043a785bc3e723096f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fca73d2e3af8cf043a785bc3e723096f, type: 3}
@@ -5420,7 +5411,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1811385460}
   - component: {fileID: 1811385459}
-  - component: {fileID: 1811385458}
   - component: {fileID: 1811385457}
   m_Layer: 0
   m_Name: Camera_ending
@@ -5460,14 +5450,6 @@ PlayableDirector:
     value: {fileID: 0}
   m_ExposedReferences:
     m_References: []
---- !u!81 &1811385458
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1811385456}
-  m_Enabled: 1
 --- !u!20 &1811385459
 Camera:
   m_ObjectHideFlags: 0
