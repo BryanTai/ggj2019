@@ -30,10 +30,23 @@ public class dummyPlayerController : MonoBehaviour
 
     public TextMesh warmthText; //TODO Replace this with another way to display current Warmth. glow effect
 
+    public Transform CompassGroupTransform;
+    public SpriteRenderer CompassHalo1; //Larger orange glow
+    public SpriteRenderer CompassHalo2; //Smaller white glow
+    public float CompassDistance = 9f; //Places the compass glow at a set distance away from the player
+    public float minCompassDistance = 10f; //Compass alpha is 0 at this distance or less
+    public float maxCompassDistance = 20f; //Compass alpha is 1 at this distance or more
+    public float maxCompassAlpha = 0.2f;
+
+
+    private Vector3 InitialCompassPosition;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+
+        InitialCompassPosition = CompassGroupTransform.localPosition;
 
         currentWarmth = maximumWarmth;
         // Initializes the follower list
@@ -120,6 +133,41 @@ public class dummyPlayerController : MonoBehaviour
                     break;
                 }
             }
+        }
+
+        UpdateCompassGlow();
+    }
+
+    //Moves the "bonfire" glow in the direction of the bonfire and sets the strength based on distance
+    private void UpdateCompassGlow()
+    {
+        Vector3 bonfireDirection = worldController.GetDirectionToBonfire();
+        CompassGroupTransform.localPosition = InitialCompassPosition + (-1 * bonfireDirection.normalized * CompassDistance);
+        //CompassHalo1.transform.Rotate(0, 5 * Time.deltaTime, 0);
+        float bonfireDistance = worldController.GetDistanceToBonfire();
+
+        Color tempColor1 = CompassHalo1.color;
+        Color tempColor2 = CompassHalo2.color;
+
+        float newAlpha = GetCompassAlpha(bonfireDistance);
+
+        tempColor1.a = tempColor2.a = newAlpha;
+        CompassHalo1.color = tempColor1;
+        CompassHalo2.color = tempColor2;    
+    }
+
+    private float GetCompassAlpha(float distance)
+    {
+        if(distance < minCompassDistance)
+        {
+            return 0;
+        }else if(distance > maxCompassDistance)
+        {
+            return maxCompassAlpha;
+        }
+        else
+        {
+            return maxCompassAlpha * ((distance - minCompassDistance) / (maxCompassDistance - minCompassDistance));
         }
     }
 
