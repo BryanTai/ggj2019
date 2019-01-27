@@ -41,9 +41,8 @@ public class dummyPlayerController : MonoBehaviour
     public SpriteRenderer CompassHalo2; //Smaller white glow
     public float CompassDistance = 9f; //Places the compass glow at a set distance away from the player
     public float minCompassDistance = 10f; //Compass alpha is 0 at this distance or less
-    public float maxCompassDistance = 20f; //Compass alpha is 1 at this distance or more
-    private float minCompassFadeDistance = 30f; //Compass alpha starts fading again after this distance
-    private float maxCompassFadeDistance = 40f; //TODO
+    public float maxCompassDistance = 20f; //Compass alpha is 1 at this distance or more. Compass alpha starts fading again after this distance
+    private float maxCompassFadeDistance = 50f; //Compass alpha goes to minCompassFadeAlpha after this distance
     public float maxCompassAlpha = 0.2f;
     private float minCompassFadeAlpha = 0.05f; //min
 
@@ -172,16 +171,20 @@ public class dummyPlayerController : MonoBehaviour
 
     private float GetCompassAlpha(float distance)
     {
-        if(distance < minCompassDistance)
+        if(distance < minCompassDistance) //Stage 1, too close to fire so no compass
         {
             return 0;
-        }else if(distance > maxCompassDistance)
-        {
-            return maxCompassAlpha;
-        }
-        else
+        }else if(distance < maxCompassDistance) //Stage 2, still in range of fire, compass fades in
         {
             return maxCompassAlpha * ((distance - minCompassDistance) / (maxCompassDistance - minCompassDistance));
+        }
+        else if(distance < maxCompassFadeDistance) //Stage 3, moving out of fire range, compass starts to fade out 
+        {
+            return maxCompassAlpha * (1 - ((distance - maxCompassDistance) / (maxCompassFadeDistance - maxCompassDistance)));
+        }
+        else //Stage 4, too far, compass is at min value
+        {
+            return minCompassFadeAlpha;
         }
     }
 
