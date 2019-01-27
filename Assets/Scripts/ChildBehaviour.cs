@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.SceneManagement;
 using UnityEngine;
-using Object = System.Object;
 
 [System.Serializable]
 public enum FollowerType { child, wood, marshmallow };
