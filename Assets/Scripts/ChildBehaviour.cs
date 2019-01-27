@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using UnityEngine;
 
 [System.Serializable]
@@ -11,6 +12,8 @@ public class ChildBehaviour : MonoBehaviour
 {
     public bool isFollowingPlayer = false;
     public bool isDroppedOff = false;
+    public bool isSitting = false;
+    public bool parentCame = false;
     private float childSize;
     private Renderer childMaterial;
     private int playerFollowerNumber;
@@ -111,6 +114,8 @@ public class ChildBehaviour : MonoBehaviour
         if ((followerType == FollowerType.child || followerType == FollowerType.wood) && isFollowingPlayer && !isDroppedOff && Vector3.Distance(player.transform.position, bonfire.transform.position) < dropOffDistance)
         {
             DroppedOff();
+            isSitting = true;
+
         }
         else if(followerType == FollowerType.marshmallow && dpc.marshmallowTaken)
         {
@@ -127,8 +132,29 @@ public class ChildBehaviour : MonoBehaviour
             }
         }
 
-        if (isDroppedOff)
+        if (isSitting)
         {
+            if (followerType == FollowerType.child)
+            {
+                if (Vector3.Distance(transform.position,player.transform.position) < 1)
+                {
+                    if (parentCame == false)
+                    {
+                        ShowHeart();
+                        parentCame = true;
+                    }   
+                }
+                
+                // parent coal left again
+                if (Vector3.Distance(transform.position, player.transform.position) > 1)
+                {
+                    parentCame = false;
+                }
+            }
+        }
+
+        if (isDroppedOff)
+        {   
             if(followerType == FollowerType.child)
             {
                 // lerp to the bonfire's position
@@ -161,6 +187,12 @@ public class ChildBehaviour : MonoBehaviour
         }
     }
 
+    private void ShowHeart()
+    {
+        Vector3 heartPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z + 1);
+        Instantiate(heart, heartPosition, heart.transform.rotation);
+    }
+
     private void DroppedOff()
     {
         isFollowingPlayer = false;
@@ -179,8 +211,7 @@ public class ChildBehaviour : MonoBehaviour
             // play sound
 
             // show heart
-            Vector3 heartPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z + 1);
-            Instantiate(heart, heartPosition, heart.transform.rotation);
+            ShowHeart();
         }
         else if(followerType == FollowerType.wood)
         {
@@ -201,8 +232,7 @@ public class ChildBehaviour : MonoBehaviour
             playerFollowerNumber = dpc.GetFollowers(); // Gets my follower position
         
             // show heart
-            Vector3 heartPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z + 1);
-            Instantiate(heart, heartPosition, heart.transform.rotation);
+            ShowHeart();
 
             //Player gets to refuel warmth if it picks up a child
             dpc.isReloadingWarmthFromChild = true;
