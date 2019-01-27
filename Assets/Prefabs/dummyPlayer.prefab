@@ -430,6 +430,7 @@ MonoBehaviour:
   woodCount: 0
   marshmallowTaken: 0
   childThatTookMarshmallow: {fileID: 0}
+  currentWarmth: 0
   maximumWarmth: 30
   warmthLossPerSecond: 1
   warmthGainPerSecond: 20
@@ -599,6 +600,11 @@ PrefabInstance:
       propertyPath: VelocityModule.radial.scalar
       value: 0.3
       objectReference: {fileID: 0}
+    - target: {fileID: 5971131527448715492, guid: 80ee67f107fb18c41ab9b693ad956257,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.scalar
+      value: -0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 3503793256621271501, guid: 80ee67f107fb18c41ab9b693ad956257,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -607,7 +613,7 @@ PrefabInstance:
     - target: {fileID: 3503793256621271501, guid: 80ee67f107fb18c41ab9b693ad956257,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.561
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 3503793256621271501, guid: 80ee67f107fb18c41ab9b693ad956257,
         type: 3}
