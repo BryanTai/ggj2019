@@ -183,6 +183,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7461321180513869757}
   - component: {fileID: 7461321180513869756}
+  - component: {fileID: 430436648794945287}
   m_Layer: 0
   m_Name: WorldController
   m_TagString: Untagged
@@ -234,3 +235,17 @@ MonoBehaviour:
   logoTime: 5
   logoTimeToDisappear: 1
   isInIntroAnimation: 1
+--- !u!114 &430436648794945287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7461321180513869759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93445083d54cc4c3d9f5ee6a73672671, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Timeline_Beginning: {fileID: 0}
+  Timeline_Ending: {fileID: 0}
