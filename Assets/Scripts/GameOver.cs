@@ -6,15 +6,23 @@ using UnityEngine.SceneManagement;
 public class GameOver : MonoBehaviour
 {
     // Start is called before the first frame update
+
+    public static GameOver gameoverAgent = null;
     public dummyPlayerController player;
     public float restartDelay = 5f;
     private Animator anim;
     private float restartTimer;
-    
+    public bool GameEnd = false;
     void Awake()
     {
         anim = GetComponent<Animator>();
+        if (gameoverAgent == null){
+            gameoverAgent = this;
+        }
     }
+
+
+
 
     // Update is called once per frame
     void Update()
@@ -31,13 +39,23 @@ public class GameOver : MonoBehaviour
             }
         }
 
+        IsGameEnd();
+
         //Debug.Log("bonfireAgent.getChildrenDroppedOff=" + BonfireSeating.bonfireAgent.getChildrenDroppedOff());
 
-        if(BonfireSeating.bonfireAgent.getChildrenDroppedOff()>=5){
-
-            TimelineController.TimelineControllerAgent.EnableTimeLine_Ending();
-           // Debug.Log("EnableTimeLine_Ending Displayed");
-        }
+       
 
     }
+
+    private void IsGameEnd()
+    {
+        if (BonfireSeating.bonfireAgent.getChildrenDroppedOff() >= 8)
+        {
+            GameEnd = true;
+            TimelineController.TimelineControllerAgent.EnableTimeLine_Ending();
+            // Debug.Log("EnableTimeLine_Ending Displayed");
+        }
+    }
+
+
 }
