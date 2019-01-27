@@ -2,12 +2,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class dummyPlayerController : MonoBehaviour
 {
     public WorldController worldController;
     private GameObject bonfire;
     private BonfireWarmth bfw;
+    public Image warmthBarUI;
 
     public float moveSpeed;
     public int pathFollowerSteps; // the distance followers will follow the player in a chain
@@ -51,6 +53,9 @@ public class dummyPlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         bonfire = GameObject.FindGameObjectWithTag("Bonfire");
         bfw = bonfire.GetComponent<BonfireWarmth>();
+
+        warmthBarUI = GameObject.FindGameObjectWithTag("warmthbar").GetComponent<Image>();
+        warmthBarUI.fillAmount = 1;
 
         InitialCompassPosition = CompassGroupTransform.localPosition;
 
@@ -189,6 +194,7 @@ public class dummyPlayerController : MonoBehaviour
     {
         float ratio = currentWarmth / maximumWarmth;
         playerEffectController.glowLevel = ratio;
+        warmthBarUI.fillAmount = ratio;
 
         if (ratio > 0.66f)
         {
