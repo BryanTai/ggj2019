@@ -49,7 +49,7 @@ public class GameOver : MonoBehaviour
 
     private void IsGameEnd()
     {
-        if (BonfireSeating.bonfireAgent.getChildrenDroppedOff() >= 8)
+        if (BonfireSeating.bonfireAgent.getChildrenDroppedOff() >= 2)
         {
             GameEnd = true;
             TimelineController.TimelineControllerAgent.EnableTimeLine_Ending();

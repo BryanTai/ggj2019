@@ -196,9 +196,10 @@ public class ChildBehaviour : MonoBehaviour
     private void setGameIsEndAnimationTrigger(){
        
 
-            Animator ChildAnimationController = this.gameObject.GetComponentInChildren<Animator>();
+        Animator ChildAnimationController = this.gameObject.GetComponent<Animator>();
+        if(ChildAnimationController!=null){
             ChildAnimationController.SetBool("GameisEnd", true);
-        
+        }
 
     }
 
