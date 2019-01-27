@@ -13,6 +13,8 @@ public class GameOver : MonoBehaviour
     private Animator anim;
     private float restartTimer;
     public bool GameEnd = false;
+
+    private bool isDead = false;
     void Awake()
     {
         anim = GetComponent<Animator>();
@@ -27,9 +29,11 @@ public class GameOver : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (player.currentWarmth <= 0)
+        if (isDead || player.currentWarmth <= 0)
         {
             anim.SetTrigger("GameOver");
+            isDead = true;
+            player.SetGameOver();
 
             restartTimer += Time.deltaTime;
 
@@ -52,6 +56,7 @@ public class GameOver : MonoBehaviour
         if (BonfireSeating.bonfireAgent.getChildrenDroppedOff() >= 8)
         {
             GameEnd = true;
+            player.SetGameOver();
             TimelineController.TimelineControllerAgent.EnableTimeLine_Ending();
             // Debug.Log("EnableTimeLine_Ending Displayed");
         }
