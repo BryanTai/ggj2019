@@ -185,7 +185,23 @@ public class ChildBehaviour : MonoBehaviour
         {
             marshmallowBlurb.SetActive(false);
         }
+
+
+        if (GameOver.gameoverAgent.GameEnd)
+        {
+            setGameIsEndAnimationTrigger();
+        }
     }
+
+    private void setGameIsEndAnimationTrigger(){
+       
+
+            Animator ChildAnimationController = this.gameObject.GetComponentInChildren<Animator>();
+            ChildAnimationController.SetBool("GameisEnd", true);
+        
+
+    }
+
 
     private void ShowHeart()
     {
