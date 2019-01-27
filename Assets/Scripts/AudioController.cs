@@ -8,8 +8,8 @@ using UnityEngine.Audio;
         
         public AudioMixerSnapshot outOfTrigger;
         public AudioMixerSnapshot inTrigger;
-        public AudioClip[] stings;
-        public AudioSource stingSource;
+        // public AudioClip[] stings;
+        // gpublic AudioSource stingSource;
         public float bpm = 128;
 
         private float m_TransitionIn;
@@ -39,5 +39,6 @@ using UnityEngine.Audio;
                 outOfTrigger.TransitionTo(m_TransitionOut);
             }
         }
+
         
     }
