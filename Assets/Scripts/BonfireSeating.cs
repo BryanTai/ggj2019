@@ -7,11 +7,23 @@ public class BonfireSeating : MonoBehaviour
 {
     public GameObject[] bonfireSeats;
 
-    private int childrenDroppedOff = 0;
+    public int childrenDroppedOff = 0;
+
+    public static BonfireSeating bonfireAgent = null;
 
     // Start is called before the first frame update
+    void Awake()
+    {
+        if (bonfireAgent == null)
+        {
+            bonfireAgent = this;
+        }
+
+    }
+
     void Start()
     {
+       
         
     }
 
@@ -26,7 +38,7 @@ public class BonfireSeating : MonoBehaviour
         childrenDroppedOff++;
     }
 
-    internal int getChildrenDroppedOff()
+    public int getChildrenDroppedOff()
     {
         return childrenDroppedOff;
     }

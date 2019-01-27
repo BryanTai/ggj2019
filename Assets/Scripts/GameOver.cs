@@ -8,7 +8,6 @@ public class GameOver : MonoBehaviour
     // Start is called before the first frame update
     public dummyPlayerController player;
     public float restartDelay = 5f;
-
     private Animator anim;
     private float restartTimer;
     
@@ -31,5 +30,14 @@ public class GameOver : MonoBehaviour
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             }
         }
+
+        //Debug.Log("bonfireAgent.getChildrenDroppedOff=" + BonfireSeating.bonfireAgent.getChildrenDroppedOff());
+
+        if(BonfireSeating.bonfireAgent.getChildrenDroppedOff()>=5){
+
+            TimelineController.TimelineControllerAgent.EnableTimeLine_Ending();
+           // Debug.Log("EnableTimeLine_Ending Displayed");
+        }
+
     }
 }
