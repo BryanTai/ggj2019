@@ -1,3 +1,15 @@
-﻿fileFormatVersion: 2
+fileFormatVersion: 2
 guid: 263a59835a7342e48da32011edb0ced3
-timeCreated: 1548544961
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - outOfTrigger: {fileID: 24500006, guid: 5ead16885bb64491ebf9b6272e2fb6b6, type: 2}
+  - inTrigger: {fileID: 245976390859365034, guid: 5ead16885bb64491ebf9b6272e2fb6b6,
+      type: 2}
+  - stingSource: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
