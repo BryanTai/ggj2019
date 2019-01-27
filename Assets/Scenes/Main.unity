@@ -2826,6 +2826,14 @@ PrefabInstance:
       propertyPath: InitialModule.gravityModifier.scalar
       value: -0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 19842296, guid: a0040bf7072bc2f4e82d887d50a9c5e2, type: 3}
+      propertyPath: autoRandomSeed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19842296, guid: a0040bf7072bc2f4e82d887d50a9c5e2, type: 3}
+      propertyPath: randomSeed
+      value: 8094
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0040bf7072bc2f4e82d887d50a9c5e2, type: 3}
 --- !u!1 &1035467920
@@ -4238,9 +4246,9 @@ PlayableDirector:
     value: {fileID: 1931055886}
   - key: {fileID: 114786965190127864, guid: c93ee0c7f266940ceb7522ae913b4100, type: 2}
     value: {fileID: 0}
-  - key: {fileID: 114161480836864382, guid: c93ee0c7f266940ceb7522ae913b4100, type: 2}
+  - key: {fileID: 114305240551694640, guid: c93ee0c7f266940ceb7522ae913b4100, type: 2}
     value: {fileID: 812143251}
-  - key: {fileID: 114104287635532602, guid: c93ee0c7f266940ceb7522ae913b4100, type: 2}
+  - key: {fileID: 114599940860531614, guid: c93ee0c7f266940ceb7522ae913b4100, type: 2}
     value: {fileID: 1639356507}
   m_ExposedReferences:
     m_References:
